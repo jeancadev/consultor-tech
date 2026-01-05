@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consultoría tecnológica, mentoría académica y soluciones con IA. Apoyo profesional para estudiantes, educadores y pequeños negocios.">
+    <meta name="keywords" content="consultor tecnológico, mentor académico, tutor programación, asesor IA, LLMs, Python, JavaScript, .NET">
+    <meta name="author" content="Jean Carlos">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Jean Carlos | Consultor Tech & Mentor">
+    <meta property="og:description" content="Consultoría tecnológica, mentoría académica y soluciones con IA">
+    <meta property="og:type" content="website">
+    
+    <title>Jean Carlos | Consultor Tech & Mentor en IA</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-mode="student">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>JC<span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Inicio</a></li>
+                <li><a href="#pathfinder" class="nav-link">Pathfinder</a></li>
+                <li><a href="#services" class="nav-link">Servicios</a></li>
+                <li><a href="#process" class="nav-link">Proceso</a></li>
+                <li><a href="#about" class="nav-link">Sobre Mí</a></li>
+                <li><a href="#contact" class="nav-link">Contacto</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Terminal -->
+    <section class="hero" id="home">
+        <div class="hero-bg-grid"></div>
+        <div class="hero-glow"></div>
+        
+        <div class="hero-content">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="btn-close"></span>
+                        <span class="btn-minimize"></span>
+                        <span class="btn-maximize"></span>
+                    </div>
+                    <span class="terminal-title">command_center.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">$</span>
+                        <span class="command">whoami</span>
+                    </div>
+                    <div class="terminal-line output">
+                        <span>Jean Carlos - Consultor Tech & Mentor</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">$</span>
+                        <span class="command">cat mensaje.txt</span>
+                    </div>
+                    <div class="terminal-line output typing-container">
+                        <span id="typing-text"></span><span class="cursor">▋</span>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="hero-title">
+                Consultoría Tecnológica<br>
+                <span class="gradient-text">Mentoría & Soluciones IA</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                Apoyo profesional para estudiantes, educadores y pequeños negocios
+            </p>
+
+            <!-- Mode Toggle -->
+            <div class="mode-toggle">
+                <button class="mode-btn active" data-mode="student" id="mode-student">
+                    <span class="mode-icon">🎓</span>
+                    <span class="mode-text">MODO ESTUDIANTE</span>
+                </button>
+                <button class="mode-btn" data-mode="consultant" id="mode-consultant">
+                    <span class="mode-icon">💼</span>
+                    <span class="mode-text">MODO CONSULTOR</span>
+                </button>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#pathfinder" class="btn btn-primary">
+                    <span>Encontrar mi solución</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#services" class="btn btn-secondary">Ver servicios</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Pathfinder Section -->
+    <section class="pathfinder" id="pathfinder">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;pathfinder&gt;</span>
+                <h2 class="section-title">Encuentra tu Camino</h2>
+                <p class="section-subtitle">Responde algunas preguntas y te guiaré hacia la solución ideal</p>
+            </div>
+
+            <div class="pathfinder-container">
+                <div class="pathfinder-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="btn-close"></span>
+                            <span class="btn-minimize"></span>
+                            <span class="btn-maximize"></span>
+                        </div>
+                        <span class="terminal-title">pathfinder.exe</span>
+                    </div>
+                    <div class="pathfinder-body">
+                        <!-- Step 1 -->
+                        <div class="pathfinder-step active" data-step="1">
+                            <div class="pf-question">
+                                <span class="pf-prompt">&gt;</span>
+                                <span class="pf-text">¿Cuál es tu perfil?</span>
+                            </div>
+                            <div class="pf-options">
+                                <button class="pf-option" data-next="2" data-value="student">
+                                    <span class="option-icon">🎓</span>
+                                    <span class="option-text">Estudiante buscando excelencia</span>
+                                </button>
+                                <button class="pf-option" data-next="3" data-value="professional">
+                                    <span class="option-icon">💼</span>
+                                    <span class="option-text">Profesional/Negocio buscando eficiencia</span>
+                                </button>
+                                <button class="pf-option" data-next="4" data-value="educator">
+                                    <span class="option-icon">📚</span>
+                                    <span class="option-text">Educador explorando IA</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Student Path -->
+                        <div class="pathfinder-step" data-step="2">
+                            <div class="pf-question">
+                                <span class="pf-prompt">&gt;</span>
+                                <span class="pf-text">¿En qué área necesitas apoyo?</span>
+                            </div>
+                            <div class="pf-options">
+                                <button class="pf-option" data-next="result" data-result="tutoring">
+                                    <span class="option-icon">🐍</span>
+                                    <span class="option-text">Programación (Python, JS, C#)</span>
+                                </button>
+                                <button class="pf-option" data-next="result" data-result="networking">
+                                    <span class="option-icon">🌐</span>
+                                    <span class="option-text">Redes / Telemática</span>
+                                </button>
+                                <button class="pf-option" data-next="result" data-result="project">
+                                    <span class="option-icon">🏗️</span>
+                                    <span class="option-text">Proyecto universitario</span>
+                                </button>
+
+                                <button class="pf-option" data-next="result" data-result="concepts">
+                                    <span class="option-icon">💡</span>
+                                    <span class="option-text">Explicación de conceptos</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Professional Path -->
+                        <div class="pathfinder-step" data-step="3">
+                            <div class="pf-question">
+                                <span class="pf-prompt">&gt;</span>
+                                <span class="pf-text">¿Qué solución buscas?</span>
+                            </div>
+                            <div class="pf-options">
+                                <button class="pf-option" data-next="result" data-result="automation">
+                                    <span class="option-icon">🤖</span>
+                                    <span class="option-text">Automatización con IA</span>
+                                </button>
+                                <button class="pf-option" data-next="result" data-result="consulting">
+                                    <span class="option-icon">📊</span>
+                                    <span class="option-text">Asesoría tecnológica</span>
+                                </button>
+                                <button class="pf-option" data-next="result" data-result="development">
+                                    <span class="option-icon">⚡</span>
+                                    <span class="option-text">Desarrollo/Optimización</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Educator Path -->
+                        <div class="pathfinder-step" data-step="4">
+                            <div class="pf-question">
+                                <span class="pf-prompt">&gt;</span>
+                                <span class="pf-text">¿Cómo puedo ayudarte?</span>
+                            </div>
+                            <div class="pf-options">
+                                <button class="pf-option" data-next="result" data-result="ai-class">
+                                    <span class="option-icon">🎓</span>
+                                    <span class="option-text">Integrar IA en mis clases</span>
+                                </button>
+                                <button class="pf-option" data-next="result" data-result="materials">
+                                    <span class="option-icon">📝</span>
+                                    <span class="option-text">Crear material didáctico con IA</span>
+                                </button>
+                                <button class="pf-option" data-next="result" data-result="training">
+                                    <span class="option-icon">🚀</span>
+                                    <span class="option-text">Capacitación en LLMs</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Results -->
+                        <div class="pathfinder-result" id="pathfinder-result">
+                            <div class="result-header">
+                                <span class="result-icon">✓</span>
+                                <span class="result-tag">Análisis completado</span>
+                            </div>
+                            <div class="result-content">
+                                <h3 id="result-title">Solución recomendada</h3>
+                                <p id="result-description">Descripción de la solución</p>
+                                <div class="result-cta">
+                                    <a href="#contact" class="btn btn-primary">Agendar consulta</a>
+                                    <button class="btn btn-secondary" id="pathfinder-reset">Reiniciar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;servicios&gt;</span>
+                <h2 class="section-title">Centro de Servicios</h2>
+                <p class="section-subtitle">Soluciones adaptadas a tu perfil y necesidades</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Student Services -->
+                <div class="service-card" data-category="student">
+                    <div class="service-icon">
+                        <span>🎓</span>
+                    </div>
+                    <h3 class="service-title">Para Estudiantes</h3>
+                    <ul class="service-list">
+                        <li>Tutorías en programación y redes</li>
+                        <li>Acompañamiento en proyectos universitarios</li>
+                        <li>Revisión y mejora de código</li>
+                        <li>Explicación de conceptos y prácticas</li>
+                    </ul>
+                    
+                    <!-- Code Editor Preview -->
+                    <div class="code-preview">
+                        <div class="code-header">
+                            <span class="code-dot"></span>
+                            <span class="code-dot"></span>
+                            <span class="code-dot"></span>
+                            <span class="code-filename">fix_example.py</span>
+                        </div>
+                        <div class="code-body">
+                            <div class="code-line error">
+                                <span class="line-number">1</span>
+                                <code><span class="keyword">def</span> <span class="function">suma</span>(a, b)</code>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">2</span>
+                                <code>    <span class="keyword">return</span> a + b</code>
+                            </div>
+                        </div>
+                        <div class="code-body fixed">
+                            <div class="code-line success">
+                                <span class="line-number">1</span>
+                                <code><span class="keyword">def</span> <span class="function">suma</span>(a, b)<span class="fix">:</span></code>
+                            </div>
+                            <div class="code-line">
+                                <span class="line-number">2</span>
+                                <code>    <span class="keyword">return</span> a + b</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-disclaimer">
+                        <span class="disclaimer-icon">ℹ️</span>
+                        <p>Mi enfoque es enseñar, guiar y revisar. No realizo exámenes ni trabajos en nombre del estudiante.</p>
+                    </div>
+                </div>
+
+                <!-- Professional Services -->
+                <div class="service-card" data-category="professional">
+                    <div class="service-icon">
+                        <span>💼</span>
+                    </div>
+                    <h3 class="service-title">Para Profesionales & Negocios</h3>
+                    <ul class="service-list">
+                        <li>Asesoría tecnológica estratégica</li>
+                        <li>Automatización con IA</li>
+                        <li>Implementación de soluciones con LLMs</li>
+                        <li>Optimización de procesos</li>
+                        <li>Soporte técnico especializado</li>
+                    </ul>
+
+                    <!-- Before/After Slider -->
+                    <div class="comparison-slider">
+                        <div class="comparison-container">
+                            <div class="comparison-before">
+                                <div class="comparison-label">ANTES</div>
+                                <div class="comparison-content">
+                                    <div class="task-item manual">📋 Revisar emails - 2h</div>
+                                    <div class="task-item manual">📊 Generar reportes - 3h</div>
+                                    <div class="task-item manual">📝 Responder clientes - 4h</div>
+                                    <div class="task-total">Total: 9 horas/día</div>
+                                </div>
+                            </div>
+                            <div class="comparison-after">
+                                <div class="comparison-label">DESPUÉS</div>
+                                <div class="comparison-content">
+                                    <div class="task-item auto">🤖 IA clasifica emails - 10min</div>
+                                    <div class="task-item auto">📊 Reportes automáticos - 5min</div>
+                                    <div class="task-item auto">💬 Chatbot responde - 24/7</div>
+                                    <div class="task-total success">Ahorro: 8+ horas/día</div>
+                                </div>
+                            </div>
+                            <input type="range" class="comparison-range" min="0" max="100" value="50">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Educator Services -->
+                <div class="service-card" data-category="educator">
+                    <div class="service-icon">
+                        <span>📚</span>
+                    </div>
+                    <h3 class="service-title">Para Educadores</h3>
+                    <ul class="service-list">
+                        <li>Integración de IA en clases</li>
+                        <li>Diseño de material didáctico con IA</li>
+                        <li>Capacitación en uso responsable de LLMs</li>
+                        <li>Apoyo técnico-pedagógico</li>
+                        <li>Estrategias de evaluación con IA</li>
+                    </ul>
+
+                    <div class="educator-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">3x</span>
+                            <span class="stat-label">Más rápido crear contenido</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">∞</span>
+                            <span class="stat-label">Variaciones de ejercicios</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;proceso&gt;</span>
+                <h2 class="section-title">Cómo Trabajamos</h2>
+                <p class="section-subtitle">Un proceso simple, claro y efectivo</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-progress" id="timeline-progress"></div>
+                
+                <div class="timeline-item" data-step="1">
+                    <div class="timeline-marker">
+                        <span class="marker-number">01</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Contacto Inicial</h3>
+                        <p>Cuéntame tu situación. ¿En qué proyecto estás? ¿Qué desafío enfrentas?</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-step="2">
+                    <div class="timeline-marker">
+                        <span class="marker-number">02</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Diagnóstico</h3>
+                        <p>Analizo tu caso en detalle. Identifico las áreas clave donde puedo aportar valor.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-step="3">
+                    <div class="timeline-marker">
+                        <span class="marker-number">03</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Propuesta Clara</h3>
+                        <p>Te presento un plan de acción concreto con tiempos, costos y entregables definidos.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-step="4">
+                    <div class="timeline-marker">
+                        <span class="marker-number">04</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Acompañamiento</h3>
+                        <p>Trabajamos juntos. Sesiones personalizadas, revisiones de código, mentoría activa.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-step="5">
+                    <div class="timeline-marker">
+                        <span class="marker-number">05</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Seguimiento</h3>
+                        <p>No desaparezco después. Verificamos resultados y ajustamos según sea necesario.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;testimonios&gt;</span>
+                <h2 class="section-title">Registro de Operaciones</h2>
+                <p class="section-subtitle">Lo que dicen quienes han trabajado conmigo</p>
+            </div>
+
+            <div class="testimonials-terminal">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="btn-close"></span>
+                        <span class="btn-minimize"></span>
+                        <span class="btn-maximize"></span>
+                    </div>
+                    <span class="terminal-title">feedback_log.txt</span>
+                </div>
+                <div class="terminal-body testimonials-body">
+                    <div class="log-entry">
+                        <span class="log-time">[2024-12-15 14:32:01]</span>
+                        <span class="log-user">estudiante_ucr</span>
+                        <span class="log-type success">[SUCCESS]</span>
+                        <p class="log-message">"Me ayudó a entender estructuras de datos de una forma que ningún profesor había logrado. Pasé el curso con 95."</p>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">[2024-11-28 09:15:44]</span>
+                        <span class="log-user">pyme_solutions</span>
+                        <span class="log-type success">[SUCCESS]</span>
+                        <p class="log-message">"Implementó un sistema de automatización que nos ahorra 20 horas semanales. ROI en menos de un mes."</p>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">[2024-10-05 16:48:22]</span>
+                        <span class="log-user">profesor_tec</span>
+                        <span class="log-type success">[SUCCESS]</span>
+                        <p class="log-message">"La capacitación en IA transformó cómo diseño mis cursos. Mis estudiantes están más enganchados que nunca."</p>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">[2024-09-12 11:22:37]</span>
+                        <span class="log-user">estudiante_una</span>
+                        <span class="log-type success">[SUCCESS]</span>
+                        <p class="log-message">"Tenía un proyecto final en Python que no sabía cómo empezar. En 3 sesiones entendí la arquitectura y lo entregué con nota perfecta. Ahora sé estructurar proyectos por mi cuenta."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;sobre_mi&gt;</span>
+                <h2 class="section-title">Quién Soy</h2>
+            </div>
+
+            <div class="about-content">
+                <div class="about-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="btn-close"></span>
+                            <span class="btn-minimize"></span>
+                            <span class="btn-maximize"></span>
+                        </div>
+                        <span class="terminal-title">about_me.json</span>
+                    </div>
+                    <div class="terminal-body about-body">
+                        <pre><code>{
+  <span class="json-key">"nombre"</span>: <span class="json-string">"Jean Carlos"</span>,
+  <span class="json-key">"rol"</span>: <span class="json-string">"Consultor Tech & Mentor"</span>,
+  <span class="json-key">"experiencia"</span>: {
+    <span class="json-key">"desarrollo"</span>: [<span class="json-string">"Python"</span>, <span class="json-string">"JavaScript"</span>, <span class="json-string">".NET"</span>, <span class="json-string">"Backend"</span>],
+    <span class="json-key">"arquitectura"</span>: <span class="json-string">"Sistemas escalables"</span>,
+    <span class="json-key">"ia_llms"</span>: <span class="json-string">"Implementación práctica"</span>
+  },
+  <span class="json-key">"mentoría"</span>: {
+    <span class="json-key">"años"</span>: <span class="json-number">2</span>,
+    <span class="json-key">"estudiantes_apoyados"</span>: <span class="json-string">"50+"</span>,
+    <span class="json-key">"enfoque"</span>: <span class="json-string">"Enseñar, no ejecutar"</span>
+  },
+  <span class="json-key">"filosofía"</span>: <span class="json-string">"La tecnología debe empoderar, no complicar"</span>
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <h3>No soy solo un tutor más</h3>
+                    <p>
+                        Tengo experiencia real en desarrollo de software, arquitectura de sistemas y 
+                        aplicación práctica de IA. No solo "uso ChatGPT" — entiendo cómo funcionan los 
+                        LLMs, sus limitaciones y cómo aprovecharlos éticamente.
+                    </p>
+                    <p>
+                        Mi enfoque es diferente: no hago tu trabajo, te enseño a hacerlo mejor. 
+                        Cada sesión está diseñada para que salgas con conocimiento real que puedas 
+                        aplicar inmediatamente.
+                    </p>
+                    
+                    <div class="tech-stack">
+                        <h4>Stack Tecnológico</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">C#/.NET</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Git</span>
+                            <span class="tech-tag">Redes</span>
+                            <span class="tech-tag">TCP/IP</span>
+                            <span class="tech-tag">OpenAI API</span>
+                            <span class="tech-tag">Anthropic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;contacto&gt;</span>
+                <h2 class="section-title">Iniciemos la Conexión</h2>
+                <p class="section-subtitle">¿Listo para dar el siguiente paso?</p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="btn-close"></span>
+                            <span class="btn-minimize"></span>
+                            <span class="btn-maximize"></span>
+                        </div>
+                        <span class="terminal-title">contact_protocol.exe</span>
+                    </div>
+                    <div class="terminal-body contact-body">
+                        <div class="contact-init">
+                            <span class="prompt">$</span>
+                            <span class="command">./iniciar_consulta.sh</span>
+                        </div>
+                        <div class="contact-output">
+                            <p>> Iniciando protocolo de consulta...</p>
+                            <p>> Sistema listo. Complete los siguientes campos:</p>
+                        </div>
+                        
+                        <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                            <!-- Web3Forms Configuration -->
+                            <input type="hidden" name="access_key" value="193c0ac5-7e59-4e20-8e9e-cdcfee9144c2">
+                            <input type="hidden" name="subject" value="Nueva consulta desde Command Center">
+                            <input type="hidden" name="from_name" value="Command Center Web">
+                            <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                            <div class="form-group">
+                                <label for="user-name">
+                                    <span class="prompt">$</span> User_Name:
+                                </label>
+                                <input type="text" id="user-name" name="name" required placeholder="Tu nombre">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="user-email">
+                                    <span class="prompt">$</span> Email:
+                                </label>
+                                <input type="email" id="user-email" name="email" required placeholder="tu@email.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="project-type">
+                                    <span class="prompt">$</span> Project_Type:
+                                </label>
+                                <select id="project-type" name="type" required>
+                                    <option value="">-- Selecciona una opción --</option>
+                                    <option value="tutoring">Tutoría en programación</option>
+                                    <option value="networking">Tutoría en redes / telemática</option>
+                                    <option value="project">Apoyo en proyecto universitario</option>
+                                    <option value="automation">Automatización con IA</option>
+                                    <option value="consulting">Asesoría tecnológica</option>
+                                    <option value="education">Integración IA educativa</option>
+                                    <option value="other">Otro</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">
+                                    <span class="prompt">$</span> Message:
+                                </label>
+                                <textarea id="message" name="message" required placeholder="Cuéntame sobre tu proyecto o necesidad..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary submit-btn">
+                                <span class="btn-text">[ EXECUTE_SEND ]</span>
+                                <span class="btn-loading">Enviando...</span>
+                            </button>
+                        </form>
+
+                        <div class="form-success" id="form-success">
+                            <p>> <span class="success-text">Mensaje enviado exitosamente!</span></p>
+                            <p>> Te contactaré pronto.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <h3>Conexión Directa</h3>
+                    <p>¿Prefieres una respuesta inmediata? Escríbeme por WhatsApp:</p>
+                    
+                    <a href="https://wa.me/50661763452?text=Hola%20Jean%20Carlos,%20me%20interesa%20conocer%20más%20sobre%20tus%20servicios" 
+                       class="whatsapp-btn" target="_blank" rel="noopener">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        <span>Chatear por WhatsApp</span>
+                    </a>
+
+                    <div class="contact-availability">
+                        <h4>Disponibilidad</h4>
+                        <p>📅 Lunes a Viernes</p>
+                        <p>🕐 9:00 AM - 8:00 PM (GMT-6)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-bracket">&lt;</span>JC<span class="logo-bracket">/&gt;</span>
+                    <p>Consultoría tecnológica, mentoría académica y soluciones con IA</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Inicio</a>
+                    <a href="#services">Servicios</a>
+                    <a href="#process">Proceso</a>
+                    <a href="#about">Sobre Mí</a>
+                    <a href="#contact">Contacto</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Jean Carlos. Todos los derechos reservados.</p>
+                <p class="footer-tagline">Construido con <span class="heart">♥</span> y mucho código</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/50661763452?text=Hola%20Jean%20Carlos,%20me%20interesa%20conocer%20más%20sobre%20tus%20servicios" 
+       class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
