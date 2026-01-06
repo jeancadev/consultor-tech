@@ -714,8 +714,19 @@ section {
    ========================================= */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-xl);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Services Grid Responsive */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        padding: 0 var(--spacing-md);
+    }
 }
 
 .service-card {
@@ -1752,8 +1763,11 @@ section {
    ========================================= */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--spacing-2xl);
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .team-member {
@@ -1820,17 +1834,37 @@ section {
 @media (max-width: 1024px) {
     .team-grid {
         grid-template-columns: 1fr;
-        max-width: 600px;
+        max-width: 500px;
         margin: 0 auto;
+        padding: 0 var(--spacing-md);
     }
 }
 
 @media (max-width: 480px) {
     .team-grid {
         grid-template-columns: 1fr;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .team-member {
+        width: 100%;
+    }
+
+    .member-terminal {
+        border-radius: var(--radius-md);
     }
 
     .member-body pre {
         font-size: 0.7rem;
+    }
+
+    .member-info {
+        padding: 0 var(--spacing-sm);
+        text-align: center;
+    }
+
+    .member-tags {
+        justify-content: center;
     }
 }
