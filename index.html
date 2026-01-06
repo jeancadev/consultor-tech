@@ -20,6 +20,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body data-mode="student">
@@ -34,7 +37,7 @@
                 <li><a href="#pathfinder" class="nav-link">Pathfinder</a></li>
                 <li><a href="#services" class="nav-link">Servicios</a></li>
                 <li><a href="#process" class="nav-link">Proceso</a></li>
-                <li><a href="#about" class="nav-link">Sobre Mí</a></li>
+                <li><a href="#about" class="nav-link">Equipo</a></li>
                 <li><a href="#contact" class="nav-link">Contacto</a></li>
             </ul>
             <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
@@ -374,6 +377,33 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Hardware & Tech Sales - Jesús -->
+                <div class="service-card" data-category="hardware">
+                    <div class="service-icon">
+                        <span>🖥️</span>
+                    </div>
+                    <h3 class="service-title">Hardware & Soporte Técnico</h3>
+                    <p class="service-provider">Por <strong>Jesús</strong> - Especialista en Hardware</p>
+                    <ul class="service-list">
+                        <li>Mantenimiento preventivo y correctivo</li>
+                        <li>Reparación de computadoras y laptops</li>
+                        <li>Instalación y configuración de software</li>
+                        <li>Venta de artículos tecnológicos</li>
+                        <li>Asesoría en compra de equipos</li>
+                    </ul>
+
+                    <div class="hardware-features">
+                        <div class="hw-feature">
+                            <span class="hw-icon">🛠️</span>
+                            <span class="hw-text">Servicio a domicilio</span>
+                        </div>
+                        <div class="hw-feature">
+                            <span class="hw-icon">✅</span>
+                            <span class="hw-text">Garantía en reparaciones</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -496,65 +526,88 @@
     <section class="about" id="about">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">&lt;sobre_mi&gt;</span>
-                <h2 class="section-title">Quién Soy</h2>
+                <span class="section-tag">&lt;equipo&gt;</span>
+                <h2 class="section-title">Nuestro Equipo</h2>
+                <p class="section-subtitle">Profesionales comprometidos con tu éxito</p>
             </div>
 
-            <div class="about-content">
-                <div class="about-terminal">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <span class="btn-close"></span>
-                            <span class="btn-minimize"></span>
-                            <span class="btn-maximize"></span>
+            <!-- Team Grid -->
+            <div class="team-grid">
+                <!-- Jean Carlos -->
+                <div class="team-member">
+                    <div class="member-terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="btn-close"></span>
+                                <span class="btn-minimize"></span>
+                                <span class="btn-maximize"></span>
+                            </div>
+                            <span class="terminal-title">jean_carlos.json</span>
                         </div>
-                        <span class="terminal-title">about_me.json</span>
-                    </div>
-                    <div class="terminal-body about-body">
-                        <pre><code>{
+                        <div class="terminal-body member-body">
+                            <pre><code>{
   <span class="json-key">"nombre"</span>: <span class="json-string">"Jean Carlos"</span>,
   <span class="json-key">"rol"</span>: <span class="json-string">"Consultor Tech & Mentor"</span>,
-  <span class="json-key">"experiencia"</span>: {
-    <span class="json-key">"desarrollo"</span>: [<span class="json-string">"Python"</span>, <span class="json-string">"JavaScript"</span>, <span class="json-string">".NET"</span>, <span class="json-string">"Backend"</span>],
-    <span class="json-key">"arquitectura"</span>: <span class="json-string">"Sistemas escalables"</span>,
-    <span class="json-key">"ia_llms"</span>: <span class="json-string">"Implementación práctica"</span>
-  },
-  <span class="json-key">"mentoría"</span>: {
-    <span class="json-key">"años"</span>: <span class="json-number">2</span>,
-    <span class="json-key">"estudiantes_apoyados"</span>: <span class="json-string">"50+"</span>,
-    <span class="json-key">"enfoque"</span>: <span class="json-string">"Enseñar, no ejecutar"</span>
-  },
-  <span class="json-key">"filosofía"</span>: <span class="json-string">"La tecnología debe empoderar, no complicar"</span>
+  <span class="json-key">"especialidades"</span>: [
+    <span class="json-string">"Desarrollo de Software"</span>,
+    <span class="json-string">"Inteligencia Artificial"</span>,
+    <span class="json-string">"Mentoría Académica"</span>,
+    <span class="json-string">"Redes / Telemática"</span>
+  ],
+  <span class="json-key">"tecnologias"</span>: [<span class="json-string">"Python"</span>, <span class="json-string">"JS"</span>, <span class="json-string">".NET"</span>, <span class="json-string">"LLMs"</span>],
+  <span class="json-key">"enfoque"</span>: <span class="json-string">"Enseñar, no ejecutar"</span>
 }</code></pre>
+                        </div>
                     </div>
-                </div>
-
-                <div class="about-text">
-                    <h3>No soy solo un tutor más</h3>
-                    <p>
-                        Tengo experiencia real en desarrollo de software, arquitectura de sistemas y 
-                        aplicación práctica de IA. No solo "uso ChatGPT" — entiendo cómo funcionan los 
-                        LLMs, sus limitaciones y cómo aprovecharlos éticamente.
-                    </p>
-                    <p>
-                        Mi enfoque es diferente: no hago tu trabajo, te enseño a hacerlo mejor. 
-                        Cada sesión está diseñada para que salgas con conocimiento real que puedas 
-                        aplicar inmediatamente.
-                    </p>
-                    
-                    <div class="tech-stack">
-                        <h4>Stack Tecnológico</h4>
-                        <div class="tech-tags">
+                    <div class="member-info">
+                        <h3>Jean Carlos</h3>
+                        <p class="member-role">Consultor Tech & Mentor en IA</p>
+                        <p>Experiencia real en desarrollo de software, arquitectura de sistemas y aplicación práctica de IA. Mi enfoque es enseñarte a resolver problemas, no hacerlo por ti.</p>
+                        <div class="member-tags">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">JavaScript</span>
                             <span class="tech-tag">C#/.NET</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">Git</span>
+                            <span class="tech-tag">LLMs</span>
                             <span class="tech-tag">Redes</span>
-                            <span class="tech-tag">TCP/IP</span>
-                            <span class="tech-tag">OpenAI API</span>
-                            <span class="tech-tag">Anthropic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jesús -->
+                <div class="team-member">
+                    <div class="member-terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="btn-close"></span>
+                                <span class="btn-minimize"></span>
+                                <span class="btn-maximize"></span>
+                            </div>
+                            <span class="terminal-title">jesus.json</span>
+                        </div>
+                        <div class="terminal-body member-body">
+                            <pre><code>{
+  <span class="json-key">"nombre"</span>: <span class="json-string">"Jesús"</span>,
+  <span class="json-key">"rol"</span>: <span class="json-string">"Especialista en Hardware"</span>,
+  <span class="json-key">"especialidades"</span>: [
+    <span class="json-string">"Mantenimiento de Equipos"</span>,
+    <span class="json-string">"Reparación de Hardware"</span>,
+    <span class="json-string">"Soporte Técnico"</span>,
+    <span class="json-string">"Venta de Tecnología"</span>
+  ],
+  <span class="json-key">"servicios"</span>: [<span class="json-string">"Domicilio"</span>, <span class="json-string">"Remoto"</span>],
+  <span class="json-key">"enfoque"</span>: <span class="json-string">"Soluciones rápidas y confiables"</span>
+}</code></pre>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Jesús</h3>
+                        <p class="member-role">Especialista en Hardware & Soporte</p>
+                        <p>Experto en mantenimiento y reparación de equipos. Ofrezco servicio a domicilio, venta de artículos tecnológicos y asesoría para que tomes las mejores decisiones de compra.</p>
+                        <div class="member-tags">
+                            <span class="tech-tag">Hardware</span>
+                            <span class="tech-tag">Reparación</span>
+                            <span class="tech-tag">Software</span>
+                            <span class="tech-tag">Ventas Tech</span>
                         </div>
                     </div>
                 </div>
@@ -623,6 +676,8 @@
                                     <option value="automation">Automatización con IA</option>
                                     <option value="consulting">Asesoría tecnológica</option>
                                     <option value="education">Integración IA educativa</option>
+                                    <option value="hardware">Mantenimiento / Reparación de equipos</option>
+                                    <option value="tech-sales">Compra de artículos tecnológicos</option>
                                     <option value="other">Otro</option>
                                 </select>
                             </div>
