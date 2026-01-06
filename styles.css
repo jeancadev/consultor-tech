@@ -1840,31 +1840,125 @@ section {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .team-grid {
         grid-template-columns: 1fr;
         max-width: 100%;
-        padding: 0;
+        padding: 0 var(--spacing-md);
+        gap: var(--spacing-xl);
     }
 
     .team-member {
         width: 100%;
+        gap: var(--spacing-md);
     }
 
     .member-terminal {
         border-radius: var(--radius-md);
+        margin: 0 var(--spacing-sm);
+    }
+
+    .member-body {
+        padding: var(--spacing-md);
     }
 
     .member-body pre {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
+        white-space: pre-wrap;
+        word-wrap: break-word;
     }
 
     .member-info {
-        padding: 0 var(--spacing-sm);
+        padding: 0 var(--spacing-md);
         text-align: center;
+    }
+
+    .member-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .member-role {
+        font-size: 0.85rem;
+    }
+
+    .member-info>p:not(.member-role) {
+        font-size: 0.9rem;
     }
 
     .member-tags {
         justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-grid {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .team-member {
+        gap: var(--spacing-sm);
+    }
+
+    .member-terminal {
+        margin: 0;
+        border-radius: var(--radius-sm);
+    }
+
+    .member-body {
+        padding: var(--spacing-sm);
+    }
+
+    .member-body pre {
+        font-size: 0.65rem;
+        line-height: 1.5;
+    }
+
+    .member-info {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .member-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .member-role {
+        font-size: 0.8rem;
+    }
+
+    .member-info>p:not(.member-role) {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    .member-tags {
+        gap: var(--spacing-xs);
+    }
+
+    .tech-tag {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .team-grid {
+        padding: 0 var(--spacing-xs);
+    }
+
+    .member-body pre {
+        font-size: 0.6rem;
+    }
+
+    .member-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .member-info>p:not(.member-role) {
+        font-size: 0.8rem;
+    }
+
+    .tech-tag {
+        font-size: 0.65rem;
+        padding: 3px 6px;
     }
 }
