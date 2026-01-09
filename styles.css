@@ -190,15 +190,18 @@ select {
     right: 0;
     z-index: 1000;
     padding: var(--spacing-md) 0;
-    background: rgba(10, 10, 15, 0.8);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--terminal-border);
+    background: rgba(10, 10, 15, 0.6);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     transition: all var(--transition-normal);
 }
 
 .navbar.scrolled {
     padding: var(--spacing-sm) 0;
-    background: rgba(10, 10, 15, 0.95);
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
 }
 
 .nav-container {
@@ -1598,12 +1601,15 @@ section {
         width: 80%;
         max-width: 300px;
         height: 100vh;
-        background: var(--bg-secondary);
+        background: rgba(18, 18, 26, 0.99);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         flex-direction: column;
         padding: 80px var(--spacing-xl) var(--spacing-xl);
         gap: var(--spacing-lg);
         transition: right var(--transition-normal);
-        border-left: 1px solid var(--terminal-border);
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
     }
 
     .nav-menu.active {
