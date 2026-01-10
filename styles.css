@@ -190,18 +190,19 @@ select {
     right: 0;
     z-index: 1000;
     padding: var(--spacing-md) 0;
-    background: rgba(10, 10, 15, 0.45);
-    backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(10, 10, 15, 0.3);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     transition: all var(--transition-normal);
 }
 
 .navbar.scrolled {
     padding: var(--spacing-sm) 0;
-    background: rgba(10, 10, 15, 0.7);
-    backdrop-filter: blur(50px) saturate(180%);
-    -webkit-backdrop-filter: blur(50px) saturate(180%);
+    background: rgba(10, 10, 15, 0.5);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-container {
@@ -1602,8 +1603,8 @@ section {
         max-width: 300px;
         height: 100vh;
         background: rgba(18, 18, 26, 0.99);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
         flex-direction: column;
         padding: 80px var(--spacing-xl) var(--spacing-xl);
         gap: var(--spacing-lg);
