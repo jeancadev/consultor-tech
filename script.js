@@ -1,397 +1,300 @@
 /* =========================================
-   THE COMMAND CENTER - JAVASCRIPT
+   GLASSMORPHISM UI - JavaScript
+   Consultor Tech - Navigation & Interactions
    ========================================= */
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all modules
-    initNavigation();
-    initTypingEffect();
-    initModeToggle();
-    initPathfinder();
-    initTimelineAnimation();
-    initContactForm();
-    initScrollAnimations();
-});
+// =========================================
+// NAVIGATION SYSTEM
+// =========================================
 
-/* =========================================
-   NAVIGATION
-   ========================================= */
-function initNavigation() {
-    const navbar = document.getElementById('navbar');
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    // Scroll effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    // Mobile menu toggle
-    navToggle.addEventListener('click', () => {
-        navToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-    });
-
-    // Close menu on link click
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
-
-    // Active link on scroll
-    const sections = document.querySelectorAll('section[id]');
+// Show a specific section
+function showSection(sectionId) {
+    // Hide main menu
+    const mainMenu = document.getElementById('main-menu');
+    mainMenu.classList.add('hidden-menu');
     
-    window.addEventListener('scroll', () => {
-        const scrollY = window.pageYOffset;
-        
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
-            const sectionId = section.getAttribute('id');
-            const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-            
-            if (navLink && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                navLinks.forEach(link => link.classList.remove('active'));
-                navLink.classList.add('active');
-            }
-        });
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Show target section
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        setTimeout(() => {
+            targetSection.classList.add('active');
+        }, 150);
+    }
+    
+    // Show back button
+    const backBtn = document.getElementById('btn-back');
+    setTimeout(() => {
+        backBtn.classList.add('visible');
+    }, 300);
+    
+    // Update active menu item
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.classList.remove('active');
     });
 }
 
-/* =========================================
-   TYPING EFFECT
-   ========================================= */
-function initTypingEffect() {
-    const typingElement = document.getElementById('typing-text');
-    if (!typingElement) return;
-
-    const messages = [
-        "¿En qué fase de tu código estás atascado?",
-        "Transformo problemas técnicos en soluciones claras.",
-        "Mentoría real, no respuestas copiadas de internet.",
-        "IA aplicada para productividad real.",
-        "Tu éxito académico y profesional es mi objetivo."
-    ];
-
-    let messageIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 50;
-
-    function type() {
-        const currentMessage = messages[messageIndex];
-        
-        if (isDeleting) {
-            typingElement.textContent = currentMessage.substring(0, charIndex - 1);
-            charIndex--;
-            typingSpeed = 30;
-        } else {
-            typingElement.textContent = currentMessage.substring(0, charIndex + 1);
-            charIndex++;
-            typingSpeed = 50;
-        }
-
-        if (!isDeleting && charIndex === currentMessage.length) {
-            // Pause at end of message
-            typingSpeed = 2000;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            messageIndex = (messageIndex + 1) % messages.length;
-            typingSpeed = 500;
-        }
-
-        setTimeout(type, typingSpeed);
-    }
-
-    // Start typing after a short delay
-    setTimeout(type, 1000);
+// Show main menu
+function showMainMenu() {
+    // Hide back button
+    const backBtn = document.getElementById('btn-back');
+    backBtn.classList.remove('visible');
+    
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Show main menu
+    const mainMenu = document.getElementById('main-menu');
+    setTimeout(() => {
+        mainMenu.classList.remove('hidden-menu');
+    }, 150);
 }
 
-/* =========================================
-   MODE TOGGLE (Student / Consultant)
-   ========================================= */
-function initModeToggle() {
-    const modeButtons = document.querySelectorAll('.mode-btn');
+// =========================================
+// DARK MODE TOGGLE
+// =========================================
+
+function toggleDarkMode() {
+    const toggle = document.getElementById('dark-mode-toggle');
     const body = document.body;
-
-    modeButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const mode = btn.dataset.mode;
-            
-            // Update active button
-            modeButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            // Update body data attribute
-            body.dataset.mode = mode;
-            
-            // Add transition effect
-            body.style.transition = 'all 0.5s ease';
-            
-            // Update hero glow animation
-            const heroGlow = document.querySelector('.hero-glow');
-            if (heroGlow) {
-                heroGlow.style.transform = 'translate(-50%, -50%) scale(1.2)';
-                setTimeout(() => {
-                    heroGlow.style.transform = 'translate(-50%, -50%) scale(1)';
-                }, 300);
-            }
-
-            // Announce mode change
-            showModeNotification(mode);
-        });
-    });
+    
+    toggle.classList.toggle('active');
+    body.classList.toggle('light-mode');
+    
+    // Save preference
+    const isDarkMode = toggle.classList.contains('active');
+    localStorage.setItem('darkMode', isDarkMode);
 }
 
-function showModeNotification(mode) {
-    // Remove existing notification
-    const existingNotif = document.querySelector('.mode-notification');
-    if (existingNotif) existingNotif.remove();
-
-    const message = mode === 'student' 
-        ? '🎓 Modo Estudiante activado' 
-        : '💼 Modo Consultor activado';
-
-    const notification = document.createElement('div');
-    notification.className = 'mode-notification';
-    notification.innerHTML = `<span>${message}</span>`;
-    notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 12px 24px;
-        background: var(--bg-card);
-        border: 1px solid var(--accent-primary);
-        border-radius: 8px;
-        font-family: var(--font-mono);
-        font-size: 0.9rem;
-        color: var(--accent-primary);
-        z-index: 9999;
-        animation: slideDown 0.3s ease, fadeOut 0.3s ease 2s forwards;
-        box-shadow: var(--shadow-glow);
-    `;
-
-    document.body.appendChild(notification);
-
-    setTimeout(() => notification.remove(), 2500);
+// Load saved dark mode preference
+function loadDarkModePreference() {
+    const savedPreference = localStorage.getItem('darkMode');
+    const toggle = document.getElementById('dark-mode-toggle');
+    
+    if (savedPreference === 'false') {
+        toggle.classList.remove('active');
+        document.body.classList.add('light-mode');
+    }
 }
 
-// Add notification animation styles
-const notifStyles = document.createElement('style');
-notifStyles.textContent = `
-    @keyframes slideDown {
-        from { transform: translateX(-50%) translateY(-20px); opacity: 0; }
-        to { transform: translateX(-50%) translateY(0); opacity: 1; }
-    }
-    @keyframes fadeOut {
-        from { opacity: 1; }
-        to { opacity: 0; }
-    }
-`;
-document.head.appendChild(notifStyles);
+// =========================================
+// PATHFINDER SYSTEM
+// =========================================
 
-/* =========================================
-   PATHFINDER (Interactive Quiz)
-   ========================================= */
+const pathfinderResults = {
+    tutoring: {
+        title: "Tutoría en Programación",
+        description: "Sesiones personalizadas para dominar Python, JavaScript, C# y más. Te ayudo a entender los conceptos desde cero o a resolver problemas específicos de tu código. Mi enfoque es que aprendas a pescar, no darte el pescado."
+    },
+    networking: {
+        title: "Tutoría en Redes y Telemática",
+        description: "Desde configuración de routers hasta arquitectura de redes empresariales. Te explico los conceptos de forma práctica y te ayudo con tus laboratorios y proyectos de networking."
+    },
+    project: {
+        title: "Apoyo en Proyecto Universitario",
+        description: "Acompañamiento completo para tu proyecto: arquitectura, implementación, debugging y documentación. Te guío paso a paso manteniendo el enfoque en que TÚ aprendas y entregues un trabajo del que estés orgulloso."
+    },
+    concepts: {
+        title: "Explicación de Conceptos",
+        description: "¿Hay algo que no entiendes por más que lo estudies? Sesiones enfocadas en aclarar dudas específicas. Uso analogías, ejemplos prácticos y diferentes enfoques hasta que el concepto haga click."
+    },
+    automation: {
+        title: "Automatización con IA",
+        description: "Implemento soluciones con LLMs y APIs de IA para automatizar tareas repetitivas en tu negocio. Desde chatbots hasta procesamiento de documentos. ROI típico en semanas, no meses."
+    },
+    consulting: {
+        title: "Asesoría Tecnológica",
+        description: "Evaluación completa de tu infraestructura tecnológica y recomendaciones estratégicas. Te ayudo a tomar decisiones informadas sobre herramientas, proveedores y arquitectura."
+    },
+    development: {
+        title: "Desarrollo y Optimización",
+        description: "Desarrollo de scripts, aplicaciones y optimización de sistemas existentes. Código limpio, documentado y mantenible. Especializado en Python, JavaScript y .NET."
+    },
+    hardware: {
+        title: "Hardware y Soporte Técnico",
+        description: "Nuestro especialista Jesús ofrece mantenimiento, reparación y venta de equipos. Servicio a domicilio disponible con garantía en todas las reparaciones."
+    },
+    "ai-class": {
+        title: "Integración de IA en Clases",
+        description: "Te enseño a usar ChatGPT, Claude y otras herramientas de IA de forma responsable en tu práctica docente. Desde generar ejercicios hasta personalizar feedback para estudiantes."
+    },
+    materials: {
+        title: "Material Didáctico con IA",
+        description: "Aprende a crear exámenes, rúbricas, presentaciones y recursos educativos usando IA como asistente. Multiplica tu productividad sin sacrificar calidad."
+    },
+    training: {
+        title: "Capacitación en LLMs",
+        description: "Workshops personalizados sobre el uso efectivo de modelos de lenguaje. Desde prompting básico hasta técnicas avanzadas. Ideal para equipos docentes que quieren modernizarse."
+    }
+};
+
 function initPathfinder() {
-    const pathfinderSteps = document.querySelectorAll('.pathfinder-step');
-    const pathfinderResult = document.getElementById('pathfinder-result');
-    const resultTitle = document.getElementById('result-title');
-    const resultDescription = document.getElementById('result-description');
-    const resetButton = document.getElementById('pathfinder-reset');
-
-    const results = {
-        tutoring: {
-            title: "Tutoría Personalizada en Programación",
-            description: "Sesiones 1:1 enfocadas en tu lenguaje y nivel. Te explico los conceptos de forma clara y te ayudo a resolver los ejercicios que traes. Ideal para reforzar lo que ves en clase."
-        },
-        networking: {
-            title: "Tutoría en Redes y Telemática",
-            description: "Desde configuración de switches y routers hasta protocolos TCP/IP, subnetting y seguridad de redes. Te ayudo a entender la teoría y aplicarla en laboratorios prácticos."
-        },
-        project: {
-            title: "Acompañamiento en Proyecto Universitario",
-            description: "Te guío en la arquitectura, revisamos tu código juntos y te ayudo a presentar un proyecto que realmente demuestre tus capacidades. No hago el trabajo por ti, te enseño a hacerlo bien."
-        },
-
-        concepts: {
-            title: "Explicación de Conceptos y Prácticas",
-            description: "A veces solo necesitas que alguien te explique un tema de otra forma. Sesiones cortas para desbloquear esos conceptos que no terminan de cuajar."
-        },
-        automation: {
-            title: "Automatización con IA para tu Negocio",
-            description: "Identificamos las tareas repetitivas de tu día a día y las automatizamos con IA. Chatbots, clasificación de emails, generación de reportes automáticos. Tu tiempo vale oro."
-        },
-        consulting: {
-            title: "Asesoría Tecnológica Estratégica",
-            description: "Analizamos tu situación actual y diseñamos un plan para que la tecnología trabaje a tu favor. Sin jerga innecesaria, con resultados medibles."
-        },
-        development: {
-            title: "Desarrollo y Optimización de Sistemas",
-            description: "Mejoramos o creamos las herramientas que tu negocio necesita. Backend, APIs, integraciones. Código limpio que escala."
-        },
-        'ai-class': {
-            title: "Integración de IA en tus Clases",
-            description: "Te ayudo a incorporar herramientas de IA de forma ética y efectiva en tu metodología. Tus estudiantes aprenderán más y tú ahorrarás tiempo."
-        },
-        materials: {
-            title: "Creación de Material Didáctico con IA",
-            description: "Generamos ejercicios, exámenes, rúbricas y contenido personalizado usando IA. Variedad infinita manteniendo la calidad pedagógica."
-        },
-        training: {
-            title: "Capacitación en LLMs y Herramientas IA",
-            description: "Workshop práctico sobre cómo funcionan realmente los LLMs, sus limitaciones y cómo aprovecharlos. Uso responsable y efectivo."
-        }
-    };
-
-    // Handle option clicks
-    document.querySelectorAll('.pf-option').forEach(option => {
+    const options = document.querySelectorAll('.pf-option');
+    const resetBtn = document.getElementById('pathfinder-reset');
+    
+    options.forEach(option => {
         option.addEventListener('click', () => {
             const nextStep = option.dataset.next;
-            const value = option.dataset.value || option.dataset.result;
-
+            const result = option.dataset.result;
+            
             // Hide current step
-            document.querySelector('.pathfinder-step.active').classList.remove('active');
-
-            if (nextStep === 'result') {
+            const currentStep = option.closest('.pathfinder-step');
+            currentStep.classList.remove('active');
+            
+            if (nextStep === 'result' && result) {
                 // Show result
-                const result = results[option.dataset.result];
-                resultTitle.textContent = result.title;
-                resultDescription.textContent = result.description;
-                pathfinderResult.classList.add('active');
+                showPathfinderResult(result);
             } else {
                 // Show next step
-                document.querySelector(`.pathfinder-step[data-step="${nextStep}"]`).classList.add('active');
+                const nextStepElement = document.querySelector(`[data-step="${nextStep}"]`);
+                if (nextStepElement) {
+                    setTimeout(() => {
+                        nextStepElement.classList.add('active');
+                    }, 100);
+                }
             }
         });
     });
-
-    // Reset pathfinder
-    if (resetButton) {
-        resetButton.addEventListener('click', () => {
-            pathfinderResult.classList.remove('active');
-            pathfinderSteps.forEach(step => step.classList.remove('active'));
-            pathfinderSteps[0].classList.add('active');
-        });
+    
+    if (resetBtn) {
+        resetBtn.addEventListener('click', resetPathfinder);
     }
 }
 
-/* =========================================
-   TIMELINE ANIMATION
-   ========================================= */
-function initTimelineAnimation() {
+function showPathfinderResult(resultKey) {
+    const result = pathfinderResults[resultKey];
+    const resultElement = document.getElementById('pathfinder-result');
+    const titleElement = document.getElementById('result-title');
+    const descElement = document.getElementById('result-description');
+    
+    if (result && resultElement) {
+        titleElement.textContent = result.title;
+        descElement.textContent = result.description;
+        
+        setTimeout(() => {
+            resultElement.classList.add('active');
+        }, 100);
+    }
+}
+
+function resetPathfinder() {
+    // Hide result
+    const resultElement = document.getElementById('pathfinder-result');
+    resultElement.classList.remove('active');
+    
+    // Hide all steps
+    document.querySelectorAll('.pathfinder-step').forEach(step => {
+        step.classList.remove('active');
+    });
+    
+    // Show first step
+    setTimeout(() => {
+        const firstStep = document.querySelector('[data-step="1"]');
+        if (firstStep) {
+            firstStep.classList.add('active');
+        }
+    }, 100);
+}
+
+// =========================================
+// TIMELINE ANIMATION
+// =========================================
+
+function initTimeline() {
     const timelineItems = document.querySelectorAll('.timeline-item');
     const timelineProgress = document.getElementById('timeline-progress');
-    const timeline = document.querySelector('.timeline');
-
-    if (!timeline || !timelineItems.length) return;
-
-    function updateTimeline() {
-        const timelineTop = timeline.offsetTop;
-        const timelineHeight = timeline.offsetHeight;
-        const scrollPosition = window.scrollY + window.innerHeight * 0.7;
-        
-        // Calculate progress
-        const progress = Math.max(0, Math.min(1, 
-            (scrollPosition - timelineTop) / (timelineHeight * 0.8)
-        ));
-        
-        if (timelineProgress) {
-            timelineProgress.style.height = `${progress * 100}%`;
-        }
-
-        // Activate items based on scroll
+    const processSection = document.getElementById('process');
+    
+    if (!timelineItems.length || !timelineProgress) return;
+    
+    // Function to activate all timeline items progressively
+    function activateTimelineItems() {
         timelineItems.forEach((item, index) => {
-            const itemTop = item.offsetTop + timelineTop;
-            const itemThreshold = itemTop - window.innerHeight * 0.5;
-
-            if (window.scrollY > itemThreshold) {
+            setTimeout(() => {
                 item.classList.add('active');
-            } else {
-                item.classList.remove('active');
-            }
+                // Update progress line
+                const progress = ((index + 1) / timelineItems.length) * 100;
+                timelineProgress.style.height = `${progress}%`;
+            }, index * 200); // 200ms delay between each item
         });
     }
-
-    window.addEventListener('scroll', updateTimeline);
-    updateTimeline(); // Initial check
+    
+    // Function to reset timeline
+    function resetTimeline() {
+        timelineItems.forEach(item => {
+            item.classList.remove('active');
+        });
+        timelineProgress.style.height = '0%';
+    }
+    
+    // Use MutationObserver to detect when process section becomes visible
+    const sectionObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                if (processSection.classList.contains('active')) {
+                    // Small delay to let the section appear first
+                    setTimeout(activateTimelineItems, 300);
+                } else {
+                    resetTimeline();
+                }
+            }
+        });
+    });
+    
+    // Observe the process section for class changes
+    if (processSection) {
+        sectionObserver.observe(processSection, { attributes: true });
+    }
 }
 
-/* =========================================
-   CONTACT FORM
-   ========================================= */
+// =========================================
+// CONTACT FORM
+// =========================================
+
 function initContactForm() {
     const form = document.getElementById('contact-form');
     const submitBtn = form?.querySelector('.submit-btn');
-    const formSuccess = document.getElementById('form-success');
-
+    const successMessage = document.getElementById('form-success');
+    
     if (!form) return;
-
+    
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-
-        // Get form data
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-
-        // Validate
-        if (!data.name || !data.email || !data.type || !data.message) {
-            showFormError('Por favor, completa todos los campos.');
-            return;
-        }
-
-        if (!isValidEmail(data.email)) {
-            showFormError('Por favor, ingresa un email válido.');
-            return;
-        }
-
+        
         // Show loading state
         submitBtn.classList.add('loading');
         submitBtn.disabled = true;
-
+        
         try {
-            // Send to Web3Forms
-            const response = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    access_key: form.querySelector('input[name="access_key"]').value,
-                    subject: 'Nueva consulta desde Command Center',
-                    from_name: 'Command Center Web',
-                    name: data.name,
-                    email: data.email,
-                    project_type: data.type,
-                    message: data.message
-                })
-            });
-
-            const result = await response.json();
+            const formData = new FormData(form);
             
-            if (result.success) {
-                // Show success message
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Success
                 form.style.display = 'none';
-                formSuccess.classList.add('show');
+                successMessage.classList.add('show');
+                
+                // Reset form
+                form.reset();
             } else {
-                throw new Error(result.message || 'Error al enviar');
+                throw new Error('Form submission failed');
             }
-
         } catch (error) {
-            console.error('Form error:', error);
-            showFormError('Error al enviar. Por favor, intenta por WhatsApp.');
+            console.error('Error:', error);
+            alert('Hubo un error al enviar el mensaje. Por favor intenta de nuevo.');
         } finally {
             submitBtn.classList.remove('loading');
             submitBtn.disabled = false;
@@ -399,117 +302,100 @@ function initContactForm() {
     });
 }
 
-function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
+// =========================================
+// KEYBOARD NAVIGATION
+// =========================================
 
-function simulateSend() {
-    return new Promise(resolve => setTimeout(resolve, 1500));
-}
-
-function showFormError(message) {
-    // Remove existing error
-    const existingError = document.querySelector('.form-error');
-    if (existingError) existingError.remove();
-
-    const error = document.createElement('div');
-    error.className = 'form-error';
-    error.textContent = message;
-    error.style.cssText = `
-        padding: 12px;
-        background: rgba(239, 68, 68, 0.1);
-        border: 1px solid var(--error);
-        border-radius: 4px;
-        color: var(--error);
-        font-size: 0.9rem;
-        margin-bottom: 16px;
-        animation: fadeIn 0.3s ease;
-    `;
-
-    const form = document.getElementById('contact-form');
-    form.insertBefore(error, form.firstChild);
-
-    setTimeout(() => error.remove(), 5000);
-}
-
-/* =========================================
-   SCROLL ANIMATIONS
-   ========================================= */
-function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll(
-        '.service-card, .section-header, .about-content, .contact-container, .testimonials-terminal'
-    );
-
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                observer.unobserve(entry.target);
+function initKeyboardNav() {
+    document.addEventListener('keydown', (e) => {
+        // ESC to go back to menu
+        if (e.key === 'Escape') {
+            const mainMenu = document.getElementById('main-menu');
+            if (mainMenu.classList.contains('hidden-menu')) {
+                showMainMenu();
             }
-        });
-    }, observerOptions);
-
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
-
-    // Add animation class styles
-    const animStyles = document.createElement('style');
-    animStyles.textContent = `
-        .animate-in {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
         }
-    `;
-    document.head.appendChild(animStyles);
+    });
 }
 
-/* =========================================
-   SMOOTH SCROLL FOR ANCHOR LINKS
-   ========================================= */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+// =========================================
+// CUSTOM SELECT DROPDOWN
+// =========================================
+
+function initCustomSelect() {
+    const customSelect = document.getElementById('custom-select');
+    const trigger = document.getElementById('select-trigger');
+    const options = document.getElementById('select-options');
+    const hiddenInput = document.getElementById('project-type');
+    const valueDisplay = trigger?.querySelector('.select-value');
+    
+    if (!customSelect || !trigger || !options) return;
+    
+    // Toggle dropdown
+    trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        customSelect.classList.toggle('open');
+    });
+    
+    // Select option
+    options.querySelectorAll('.select-option').forEach(option => {
+        option.addEventListener('click', () => {
+            const value = option.dataset.value;
+            const text = option.querySelector('span:last-child').textContent;
+            
+            // Update hidden input
+            hiddenInput.value = value;
+            
+            // Update display
+            valueDisplay.textContent = text;
+            valueDisplay.classList.remove('placeholder');
+            
+            // Mark as selected
+            options.querySelectorAll('.select-option').forEach(opt => {
+                opt.classList.remove('selected');
             });
+            option.classList.add('selected');
+            
+            // Close dropdown
+            customSelect.classList.remove('open');
+        });
+    });
+    
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+        if (!customSelect.contains(e.target)) {
+            customSelect.classList.remove('open');
         }
     });
-});
-
-/* =========================================
-   CODE PREVIEW HOVER EFFECT
-   ========================================= */
-document.querySelectorAll('.code-preview').forEach(preview => {
-    preview.addEventListener('mouseenter', () => {
-        preview.classList.add('showing-fix');
+    
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            customSelect.classList.remove('open');
+        }
     });
-    preview.addEventListener('mouseleave', () => {
-        preview.classList.remove('showing-fix');
-    });
+}
+
+// =========================================
+// INITIALIZATION
+// =========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadDarkModePreference();
+    initPathfinder();
+    initTimeline();
+    initContactForm();
+    initKeyboardNav();
+    initCustomSelect();
+    
+    // Activate first timeline item by default
+    const firstTimelineItem = document.querySelector('.timeline-item');
+    if (firstTimelineItem) {
+        firstTimelineItem.classList.add('active');
+    }
 });
 
-/* =========================================
-   PARALLAX EFFECT FOR HERO GLOW
-   ========================================= */
-document.addEventListener('mousemove', (e) => {
-    const heroGlow = document.querySelector('.hero-glow');
-    if (!heroGlow) return;
-
-    const x = (e.clientX / window.innerWidth - 0.5) * 50;
-    const y = (e.clientY / window.innerHeight - 0.5) * 50;
-
-    heroGlow.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
-});
+// Make functions globally available
+window.showSection = showSection;
+window.showMainMenu = showMainMenu;
+window.toggleDarkMode = toggleDarkMode;
