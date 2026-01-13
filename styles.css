@@ -2116,3 +2116,38 @@ body {
 .light-mode .service-disclaimer p {
     color: #2d4a35;
 }
+
+/* =========================================
+   SMALL LAPTOP SCREENS (subtle adjustment)
+   ========================================= */
+/* =========================================
+   SMALL LAPTOP SCREENS (subtle adjustment)
+   ========================================= */
+@media (max-height: 750px) and (min-width: 769px) {
+    .menu-panel {
+        padding: var(--spacing-lg);
+        /* Restaurado padding original del panel */
+    }
+
+    .menu-section {
+        padding: 10px 0;
+        /* Aumentado de 8px */
+    }
+
+    .menu-section:not(:last-child) {
+        margin-bottom: 10px;
+        /* Aumentado de 8px */
+    }
+
+    .menu-item {
+        padding: 12px var(--spacing-lg);
+        /* Aumentado de 10px a 12px (casi original) */
+    }
+
+    .menu-footer {
+        padding: 12px var(--spacing-lg);
+        /* Aumentado de 10px a 12px */
+        margin-top: 10px;
+        /* Aumentado de 8px */
+    }
+}
