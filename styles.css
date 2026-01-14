@@ -451,10 +451,10 @@ select,
 
 .toggle-switch {
     position: relative;
-    width: 51px;
-    height: 31px;
+    width: 46px;
+    height: 28px;
     background: rgba(120, 120, 128, 0.32);
-    border-radius: 16px;
+    border-radius: 14px;
     cursor: pointer;
     transition: background 0.3s ease;
     /* Liquid Glass - subtle inner highlight */
@@ -467,8 +467,8 @@ select,
     position: absolute;
     top: 2px;
     left: 2px;
-    width: 27px;
-    height: 27px;
+    width: 24px;
+    height: 24px;
     background: #fff;
     border-radius: 50%;
     box-shadow:
@@ -487,7 +487,7 @@ select,
 }
 
 .toggle-switch.active::after {
-    transform: translateX(20px);
+    transform: translateX(18px);
 }
 
 /* Menu Footer */
