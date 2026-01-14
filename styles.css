@@ -154,6 +154,90 @@ select {
 }
 
 /* =========================================
+   TOUCH FEEDBACK - Mobile Optimization
+   ========================================= */
+/* Remove default tap highlight on all interactive elements */
+a,
+button,
+input,
+textarea,
+select,
+[role="button"],
+.menu-item,
+.pf-option,
+.service-card,
+.social-link,
+.team-card,
+.toggle-switch,
+.btn,
+.btn-back,
+.btn-primary,
+.btn-secondary,
+.menu-footer-btn,
+.menu-footer-link {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+/* Touch feedback effect - subtle scale and opacity change */
+@media (hover: none) and (pointer: coarse) {
+
+    /* Buttons */
+    .btn:active,
+    .btn-primary:active,
+    .btn-secondary:active,
+    .btn-back:active,
+    .menu-footer-btn:active {
+        transform: scale(0.97);
+        opacity: 0.85;
+        transition: transform 0.1s ease, opacity 0.1s ease;
+    }
+
+    /* Menu items */
+    .menu-item:active {
+        transform: scale(0.98);
+        background: var(--glass-bg-hover);
+        border-color: var(--accent-primary);
+    }
+
+    /* Pathfinder options */
+    .pf-option:active {
+        transform: translateX(4px) scale(0.98);
+        background: var(--glass-bg-hover);
+        border-color: var(--accent-primary);
+    }
+
+    /* Service cards */
+    .service-card:active {
+        transform: scale(0.98);
+        border-color: var(--accent-primary);
+    }
+
+    /* Social links */
+    .social-link:active {
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
+
+    /* Team cards */
+    .team-card:active {
+        transform: scale(0.98);
+        border-color: var(--accent-primary);
+    }
+
+    /* Toggle switch */
+    .toggle-switch:active {
+        transform: scale(0.95);
+    }
+
+    /* Links */
+    a:active,
+    .menu-footer-link:active {
+        opacity: 0.7;
+    }
+}
+
+/* =========================================
    GLASSMORPHISM BASE CLASSES
    ========================================= */
 .glass-panel {
