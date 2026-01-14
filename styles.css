@@ -174,7 +174,10 @@ select,
 .btn-primary,
 .btn-secondary,
 .menu-footer-btn,
-.menu-footer-link {
+.menu-footer-link,
+.custom-select,
+.select-trigger,
+.select-option {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
 }
