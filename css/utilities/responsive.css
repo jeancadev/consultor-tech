@@ -1,0 +1,363 @@
+/* =========================================
+   RESPONSIVE STYLES
+   Media queries for all breakpoints
+   ========================================= */
+
+/* Tablet and below (768px) */
+@media (max-width: 768px) {
+    .menu-panel {
+        min-width: auto;
+        max-width: 90%;
+        padding: var(--spacing-md);
+    }
+
+    .menu-item {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .btn-back {
+        top: var(--spacing-md);
+        left: var(--spacing-md);
+        padding: var(--spacing-xs) var(--spacing-md);
+        font-size: 0.8rem;
+    }
+
+    .section {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .section-container {
+        padding-top: var(--spacing-3xl);
+    }
+
+    .timeline {
+        padding-left: 40px;
+    }
+
+    .timeline-marker {
+        left: -40px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .timeline-line,
+    .timeline-progress {
+        left: 15px;
+    }
+
+    .whatsapp-float {
+        bottom: var(--spacing-md);
+        right: var(--spacing-md);
+        width: 48px;
+        height: 48px;
+    }
+
+    .whatsapp-float svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .contact-container {
+        gap: var(--spacing-lg);
+    }
+
+    /* Team Section */
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .team-member {
+        padding: var(--spacing-md);
+    }
+
+    .member-code {
+        padding: var(--spacing-sm);
+        font-size: 0.65rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .member-code pre {
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    .member-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .member-role {
+        font-size: 0.8rem;
+    }
+
+    .member-info>p {
+        font-size: 0.85rem;
+    }
+
+    .member-tags {
+        gap: var(--spacing-xs);
+    }
+
+    .tech-tag {
+        font-size: 0.7rem;
+        padding: 2px 6px;
+    }
+
+    /* Contact Section */
+    .contact-panel {
+        padding: var(--spacing-md);
+    }
+
+    .contact-form {
+        gap: var(--spacing-md);
+    }
+
+    .form-group label {
+        font-size: 0.85rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9rem;
+    }
+
+    .form-group textarea {
+        min-height: 100px;
+    }
+
+    .contact-info {
+        padding: var(--spacing-md);
+    }
+
+    .contact-info h3 {
+        font-size: 1rem;
+    }
+
+    .contact-info>p {
+        font-size: 0.85rem;
+    }
+
+    .whatsapp-btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9rem;
+    }
+
+    .contact-availability h4 {
+        font-size: 0.85rem;
+    }
+
+    .contact-availability p {
+        font-size: 0.8rem;
+    }
+
+    /* Services Cards */
+    .service-card {
+        padding: var(--spacing-md);
+    }
+
+    .service-icon {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .service-title {
+        font-size: 1.1rem;
+    }
+
+    .service-list li {
+        font-size: 0.85rem;
+        padding-left: var(--spacing-md);
+    }
+
+    /* Comparison Container */
+    .comparison-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .task-item {
+        font-size: 0.7rem;
+    }
+
+    .task-total {
+        font-size: 0.65rem;
+    }
+
+    /* Educator Stats */
+    .educator-stats {
+        gap: var(--spacing-sm);
+    }
+
+    .stat-item {
+        padding: var(--spacing-sm);
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.65rem;
+    }
+
+    /* Hardware Features */
+    .hw-feature {
+        font-size: 0.8rem;
+    }
+
+    /* Section Container */
+    .section-container {
+        padding-top: var(--spacing-xl);
+    }
+
+    .section-header {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .section-tag {
+        font-size: 0.75rem;
+        padding: 2px var(--spacing-sm);
+    }
+
+    /* Back Button */
+    .btn-back {
+        top: var(--spacing-sm);
+        left: var(--spacing-sm);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 0.75rem;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.85rem;
+    }
+
+    .result-cta {
+        flex-direction: column;
+    }
+
+    .result-cta .btn {
+        width: 100%;
+    }
+}
+
+/* Extra Small Devices (360px and below) */
+@media (max-width: 360px) {
+    .menu-panel {
+        padding: var(--spacing-sm);
+        min-width: auto;
+        max-width: 95%;
+    }
+
+    .menu-item {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9rem;
+    }
+
+    .section {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .team-member,
+    .service-card,
+    .contact-panel,
+    .contact-info {
+        padding: var(--spacing-sm);
+    }
+
+    .member-code {
+        font-size: 0.55rem;
+        padding: var(--spacing-xs);
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.85rem;
+    }
+
+    .pathfinder-panel {
+        padding: var(--spacing-md);
+    }
+
+    .pf-text {
+        font-size: 1rem;
+    }
+
+    .pf-option {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .option-icon {
+        font-size: 1.2rem;
+    }
+
+    .option-text {
+        font-size: 0.85rem;
+    }
+
+    .timeline {
+        padding-left: 35px;
+    }
+
+    .timeline-marker {
+        left: -35px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .marker-number {
+        font-size: 0.7rem;
+    }
+
+    .timeline-line,
+    .timeline-progress {
+        left: 13px;
+    }
+
+    .timeline-content {
+        padding: var(--spacing-sm);
+    }
+
+    .timeline-content h3 {
+        font-size: 0.9rem;
+    }
+
+    .timeline-content p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Light Mode Specific Overrides */
+.light-mode .log-entry {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.light-mode .member-code {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text-secondary);
+}
+
+.light-mode .json-key {
+    color: #00695c;
+}
+
+.light-mode .json-string {
+    color: #2e7d32;
+}

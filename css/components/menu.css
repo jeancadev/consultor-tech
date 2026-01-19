@@ -1,0 +1,135 @@
+/* =========================================
+   MAIN MENU (HUB)
+   Central navigation menu component
+   ========================================= */
+
+.main-menu {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    transition: all var(--transition-slow);
+}
+
+.main-menu.hidden-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+}
+
+.menu-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--glass-shadow);
+    padding: var(--spacing-lg);
+    min-width: 320px;
+    max-width: 400px;
+    width: 90%;
+}
+
+.menu-section {
+    padding: var(--spacing-sm) 0;
+}
+
+.menu-section:not(:last-child) {
+    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: var(--spacing-sm);
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: 1px solid transparent;
+}
+
+.menu-item:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border);
+}
+
+.menu-item.active {
+    background: var(--glass-bg-hover);
+    border-color: var(--accent-primary);
+}
+
+.menu-item-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.menu-item-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+}
+
+/* Menu Footer */
+.menu-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    margin-top: var(--spacing-sm);
+    border-top: 1px solid var(--glass-border);
+}
+
+.menu-footer-link {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    transition: color var(--transition-fast);
+}
+
+.menu-footer-link:hover {
+    color: var(--text-primary);
+}
+
+.menu-footer-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    transition: all var(--transition-fast);
+}
+
+.menu-footer-btn:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--accent-primary);
+}
+
+/* Touch Feedback for Menu Items */
+@media (hover: none) and (pointer: coarse) {
+    .menu-item:active {
+        transform: scale(0.98);
+        background: var(--glass-bg-hover);
+        border-color: var(--accent-primary);
+    }
+
+    a:active,
+    .menu-footer-link:active {
+        opacity: 0.7;
+    }
+}

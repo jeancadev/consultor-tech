@@ -1,0 +1,16 @@
+/* =========================================
+   TEAM SECTION
+   Team grid layout
+   ========================================= */
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+}

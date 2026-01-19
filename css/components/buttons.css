@@ -1,0 +1,87 @@
+/* =========================================
+   BUTTONS
+   All button styles and variants
+   ========================================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: var(--accent-gradient);
+    color: #fff;
+    box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px var(--accent-glow);
+}
+
+.btn-secondary {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--accent-primary);
+}
+
+.btn-back {
+    position: fixed;
+    top: var(--spacing-xl);
+    left: var(--spacing-xl);
+    z-index: 100;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-20px);
+    transition: all var(--transition-normal);
+}
+
+.btn-back.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.btn-back:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--accent-primary);
+}
+
+/* Touch Feedback for Buttons */
+@media (hover: none) and (pointer: coarse) {
+
+    .btn:active,
+    .btn-primary:active,
+    .btn-secondary:active,
+    .btn-back:active,
+    .menu-footer-btn:active {
+        transform: scale(0.97);
+        opacity: 0.85;
+        transition: transform 0.1s ease, opacity 0.1s ease;
+    }
+}

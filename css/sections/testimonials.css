@@ -1,0 +1,111 @@
+/* =========================================
+   TESTIMONIALS SECTION
+   Terminal-style testimonials panel
+   ========================================= */
+
+.testimonials-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.testimonials-header {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.testimonials-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.testimonials-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.testimonials-dots .dot-red {
+    background: #ff5f56;
+}
+
+.testimonials-dots .dot-yellow {
+    background: #ffbd2e;
+}
+
+.testimonials-dots .dot-green {
+    background: #27ca40;
+}
+
+.testimonials-title {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin-left: var(--spacing-sm);
+}
+
+.testimonials-body {
+    padding: var(--spacing-lg);
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.testimonials-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.testimonials-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.testimonials-body::-webkit-scrollbar-thumb {
+    background: var(--glass-border);
+    border-radius: 3px;
+}
+
+.log-entry {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 0.85rem;
+}
+
+.log-entry:last-child {
+    border-bottom: none;
+}
+
+.log-time {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    margin-right: var(--spacing-sm);
+}
+
+.log-user {
+    color: var(--accent-primary);
+    margin-right: var(--spacing-sm);
+}
+
+.log-type {
+    font-weight: 600;
+}
+
+.log-type.success {
+    color: var(--success);
+}
+
+.log-message {
+    margin-top: var(--spacing-sm);
+    color: var(--text-secondary);
+    font-style: italic;
+    padding-left: var(--spacing-md);
+    border-left: 2px solid var(--glass-border);
+}
