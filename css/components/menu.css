@@ -10,13 +10,22 @@
     align-items: center;
     justify-content: center;
     z-index: 50;
-    transition: all var(--transition-slow);
+    /* Sin transición de opacity aquí - se maneja en menu-panel */
 }
 
 .main-menu.hidden-menu {
+    pointer-events: none;
+}
+
+/* La animación de opacity va en el panel, no en el contenedor */
+.main-menu.hidden-menu .menu-panel {
     opacity: 0;
-    visibility: hidden;
-    transform: scale(0.95);
+    transform: translateZ(0) scale(0.95);
+}
+
+/* Estado inicial: panel oculto hasta que la página esté lista */
+.menu-panel {
+    opacity: 0;
 }
 
 .menu-panel {
@@ -30,6 +39,18 @@
     min-width: 320px;
     max-width: 400px;
     width: 90%;
+    /* GPU optimization: blur siempre pre-renderizado en capa separada */
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    /* Transición suave del panel */
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+/* Mostrar panel cuando la página esté lista */
+.menu-panel.ready {
+    opacity: 1;
 }
 
 .menu-section {

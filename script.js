@@ -393,6 +393,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (firstTimelineItem) {
         firstTimelineItem.classList.add('active');
     }
+    
+    // Mostrar menu-panel suavemente después de que el blur se inicialice
+    const menuPanel = document.querySelector('.menu-panel');
+    if (menuPanel) {
+        // Pequeño delay para asegurar que backdrop-filter esté listo
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                menuPanel.classList.add('ready');
+            });
+        });
+    }
 });
 
 // Make functions globally available
