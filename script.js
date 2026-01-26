@@ -4,6 +4,28 @@
    ========================================= */
 
 // =========================================
+// PATHFINDER TO CONTACT FORM MAPPING
+// =========================================
+
+// Variable to store the user's pathfinder selection
+let selectedPathfinderResult = null;
+
+// Mapping from pathfinder results to contact form values
+const pathfinderToContactMap = {
+    'tutoring': 'tutoring',
+    'networking': 'networking',
+    'project': 'project',
+    'concepts': 'tutoring',      // Similar to tutoring
+    'automation': 'automation',
+    'consulting': 'consulting',
+    'development': 'consulting', // Falls under consulting
+    'hardware': 'hardware',
+    'ai-class': 'education',     // Educator services
+    'materials': 'education',    // Educator services
+    'training': 'education'      // Educator services
+};
+
+// =========================================
 // NAVIGATION SYSTEM
 // =========================================
 
@@ -23,6 +45,11 @@ function showSection(sectionId) {
     if (targetSection) {
         setTimeout(() => {
             targetSection.classList.add('active');
+            
+            // Preselect contact form project type if navigating to contact
+            if (sectionId === 'contact') {
+                preselectContactType();
+            }
         }, 150);
     }
     
@@ -177,6 +204,9 @@ function showPathfinderResult(resultKey) {
         titleElement.textContent = result.title;
         descElement.textContent = result.description;
         
+        // Store the selection for contact form preloading
+        selectedPathfinderResult = resultKey;
+        
         setTimeout(() => {
             resultElement.classList.add('active');
         }, 100);
@@ -187,6 +217,9 @@ function resetPathfinder() {
     // Hide result
     const resultElement = document.getElementById('pathfinder-result');
     resultElement.classList.remove('active');
+    
+    // Clear the stored selection
+    selectedPathfinderResult = null;
     
     // Hide all steps
     document.querySelectorAll('.pathfinder-step').forEach(step => {
@@ -200,6 +233,42 @@ function resetPathfinder() {
             firstStep.classList.add('active');
         }
     }, 100);
+}
+
+/**
+ * Preselect the contact form project type based on pathfinder selection
+ */
+function preselectContactType() {
+    // Only preselect if user came from pathfinder
+    if (!selectedPathfinderResult) return;
+    
+    const contactValue = pathfinderToContactMap[selectedPathfinderResult];
+    if (!contactValue) return;
+    
+    const hiddenInput = document.getElementById('project-type');
+    const trigger = document.getElementById('select-trigger');
+    const valueDisplay = trigger?.querySelector('.select-value');
+    const options = document.getElementById('select-options');
+    
+    if (!hiddenInput || !valueDisplay || !options) return;
+    
+    // Find the matching option
+    const matchingOption = options.querySelector(`[data-value="${contactValue}"]`);
+    if (!matchingOption) return;
+    
+    // Update hidden input
+    hiddenInput.value = contactValue;
+    
+    // Update display text
+    const optionText = matchingOption.querySelector('span:last-child').textContent;
+    valueDisplay.textContent = optionText;
+    valueDisplay.classList.remove('placeholder');
+    
+    // Mark option as selected
+    options.querySelectorAll('.select-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+    matchingOption.classList.add('selected');
 }
 
 // =========================================

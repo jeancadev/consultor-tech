@@ -49,11 +49,11 @@
     color: var(--text-secondary);
     text-align: left;
     transition:
-        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-        background 0.35s ease-out,
-        border-color 0.35s ease-out,
+        transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        background 0.3s ease-out,
+        border-color 0.3s ease-out,
         color 0.25s ease-out,
-        box-shadow 0.4s ease-out;
+        box-shadow 0.3s ease-out;
     will-change: transform;
 }
 
@@ -72,7 +72,7 @@
 
 .option-icon {
     font-size: 1.4rem;
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .pf-option:hover .option-icon {
