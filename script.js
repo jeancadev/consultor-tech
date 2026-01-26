@@ -170,20 +170,24 @@ function initPathfinder() {
             const nextStep = option.dataset.next;
             const result = option.dataset.result;
             
-            // Hide current step
             const currentStep = option.closest('.pathfinder-step');
-            currentStep.classList.remove('active');
             
             if (nextStep === 'result' && result) {
-                // Show result
+                // Show result - hide current step immediately
+                currentStep.classList.remove('active');
                 showPathfinderResult(result);
             } else {
-                // Show next step
+                // Show next step first, then hide current (prevents layout jump)
                 const nextStepElement = document.querySelector(`[data-step="${nextStep}"]`);
                 if (nextStepElement) {
-                    setTimeout(() => {
+                    // Use requestAnimationFrame for smoother transition
+                    requestAnimationFrame(() => {
                         nextStepElement.classList.add('active');
-                    }, 100);
+                        // Hide current step after next step is visible
+                        requestAnimationFrame(() => {
+                            currentStep.classList.remove('active');
+                        });
+                    });
                 }
             }
         });
